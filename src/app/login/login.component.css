@@ -1,0 +1,51 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-title {
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.login-form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border: 2px solid #4758b8;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+mat-form-field {
+  margin-bottom: 24px;
+}
+
+button {
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .login-form {
+    width: 80%;
+    padding: 10px 16px;
+  }
+}
+
+.register-redirect {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-redirect a {
+  color: #4758b8;
+  text-decoration: none;
+}
+
+.register-redirect a:hover {
+  text-decoration: underline;
+}

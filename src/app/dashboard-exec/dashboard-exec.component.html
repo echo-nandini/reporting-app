@@ -1,0 +1,61 @@
+<div class="header-band">
+  <div class="welcome-message">Welcome, {{ username }}</div>
+  <h1 class="header-title">IT Ticket Analytics</h1>
+  <button mat-raised-button class="upload-button" (click)="fileInput.click()">
+    Upload File
+  </button>
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept=".xlsx, .xls"
+    #fileInput
+    style="display: none"
+  />
+</div>
+
+<div class="analytics-summary">
+  <p>
+    Analytics for <span class="highlight">{{ totalTickets }}</span> tickets from
+    <span class="highlight">{{ minDate | date : "shortDate" }}</span> to
+    <span class="highlight">{{ maxDate | date : "shortDate" }}</span>
+  </p>
+</div>
+
+<div class="priority-cards">
+  <div class="priority-card" *ngFor="let priority of priorityData">
+    <div class="progress-circle">
+      <svg style="border: none">
+        <circle class="bg" cx="50" cy="50" r="45"></circle>
+        <circle
+          class="progress"
+          cx="50"
+          cy="50"
+          r="45"
+          [style.strokeDasharray]="getProgressValue(priority.value)"
+        ></circle>
+      </svg>
+      <div class="number">
+        {{ calculatePercentage(animatedValues[priority.label]) }}%
+      </div>
+    </div>
+    <p>{{ priority.label }}</p>
+    <p>{{ priority.value }}/{{ totalTickets }} Tickets</p>
+  </div>
+</div>
+
+<div class="charts-container">
+  <div>
+    <div class="chart-container">
+      <svg width="600" height="400" #yearlyChart class="line-chart"></svg>
+    </div>
+    <div class="chart-container">
+      <svg width="600" height="400" #monthlyChart class="line-chart"></svg>
+    </div>
+  </div>
+  <div class="chart-container">
+    <svg width="600" height="400" #assigneeChart></svg>
+  </div>
+  <div class="chart-container">
+    <svg width="600" height="400" #appNameChart></svg>
+  </div>
+</div>
